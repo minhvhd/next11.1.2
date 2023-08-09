@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPropsContext } from "next";
+import Link from "next/link";
 
 export type PostsPageProps = {
   posts: { id: string; title: string }[]
@@ -12,7 +13,11 @@ export default function PostsPage({ posts }: PostsPageProps) {
       <ul>
         { posts.map(post => {
           return (
-            <li key={ post.id }>{ post.title }</li>
+            <li key={ post.id }>
+              <Link href={ `/posts/${post.id}` }>
+                { post.title }
+              </Link>
+            </li>
           )
         }) }
       </ul>
